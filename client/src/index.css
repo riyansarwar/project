@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 186 60% 92%;
+    --foreground: 195 90% 15%;
+    --card: 186 45% 96%;
+    --card-foreground: 195 80% 20%;
+    --popover: 186 50% 97%;
+    --popover-foreground: 195 80% 20%;
+    --primary: 187 85% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 186 60% 85%;
+    --secondary-foreground: 187 95% 20%;
+    --muted: 186 50% 88%;
+    --muted-foreground: 195 50% 35%;
+    --accent: 186 70% 80%;
+    --accent-foreground: 187 95% 20%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 186 50% 80%;
+    --input: 186 55% 90%;
+    --ring: 187 85% 45%;
+    --radius: 0.5rem;
+    --chart-1: 187 85% 45%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --sidebar-background: 186 50% 94%;
+    --sidebar-foreground: 195 85% 20%;
+    --sidebar-primary: 187 85% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 186 60% 88%;
+    --sidebar-accent-foreground: 187 95% 20%;
+    --sidebar-border: 186 50% 82%;
+    --sidebar-ring: 187 85% 45%;
+  }
+
+  .dark {
+    --background: 187 100% 6%;
+    --foreground: 186 100% 94%;
+    --card: 187 100% 8%;
+    --card-foreground: 186 100% 94%;
+    --popover: 187 100% 8%;
+    --popover-foreground: 186 100% 94%;
+    --primary: 186 100% 94%;
+    --primary-foreground: 187 100% 6%;
+    --secondary: 187 50% 20%;
+    --secondary-foreground: 186 100% 94%;
+    --muted: 187 50% 20%;
+    --muted-foreground: 186 30% 65%;
+    --accent: 187 50% 20%;
+    --accent-foreground: 186 100% 94%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 187 50% 20%;
+    --input: 187 50% 20%;
+    --ring: 186 100% 94%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 187 100% 8%;
+    --sidebar-foreground: 186 100% 90%;
+    --sidebar-primary: 186 100% 94%;
+    --sidebar-primary-foreground: 187 100% 8%;
+    --sidebar-accent: 187 50% 15%;
+    --sidebar-accent-foreground: 186 100% 94%;
+    --sidebar-border: 187 50% 15%;
+    --sidebar-ring: 186 100% 94%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground;
+    background: linear-gradient(135deg, hsl(186, 65%, 94%) 0%, hsl(186, 55%, 90%) 50%, hsl(187, 60%, 92%) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at top right, hsla(187, 80%, 85%, 0.1) 0%, transparent 60%),
+                radial-gradient(ellipse at bottom left, hsla(186, 70%, 80%, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Custom cyan animations and effects */
+  @keyframes cyan-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+    }
+  }
+
+  @keyframes cyan-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-cyan-glow {
+    animation: cyan-glow 2s ease-in-out infinite;
+  }
+
+  .animate-cyan-pulse {
+    animation: cyan-pulse 1.5s ease-in-out infinite;
+  }
+
+  /* Custom scrollbar with cyan theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--secondary) / 0.5);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.6), hsl(var(--primary) / 0.8));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary)));
+  }
+
+  /* Enhanced selection color */
+  ::selection {
+    background: hsl(var(--primary) / 0.2);
+    color: hsl(var(--primary));
+  }
+
+  /* Custom link styles */
+  a {
+    color: hsl(var(--primary));
+    transition: all 0.2s ease-in-out;
+  }
+
+  a:hover {
+    color: hsl(var(--primary) / 0.8);
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.3);
+  }
+
+  /* Custom focus rings for better interactivity */
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.3), 0 0 10px hsl(var(--primary) / 0.2);
+  }
+
+  /* Enhanced hover effects */
+  .hover-lift {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.15);
+  }
+
+  /* Cyan utility classes for attractive styling */
+  .cyan-glass {
+    background: linear-gradient(135deg, 
+      hsla(var(--primary), 0.05) 0%, 
+      hsla(var(--primary), 0.1) 50%, 
+      hsla(var(--primary), 0.05) 100%);
+    backdrop-filter: blur(8px);
+    border: 1px solid hsla(var(--primary), 0.2);
+  }
+
+  .cyan-glow-box {
+    box-shadow: 0 0 20px hsla(var(--primary), 0.1), 
+                0 0 40px hsla(var(--primary), 0.05);
+  }
+
+  .cyan-glow-box:hover {
+    box-shadow: 0 0 30px hsla(var(--primary), 0.15), 
+                0 0 60px hsla(var(--primary), 0.08);
+  }
+
+  .cyan-border-glow {
+    border: 1px solid hsla(var(--primary), 0.3);
+    box-shadow: inset 0 1px 0 hsla(var(--primary), 0.1),
+                0 0 10px hsla(var(--primary), 0.05);
+  }
+
+  .cyan-border-glow:hover {
+    border-color: hsla(var(--primary), 0.5);
+    box-shadow: inset 0 1px 0 hsla(var(--primary), 0.2),
+                0 0 20px hsla(var(--primary), 0.1);
+  }
+}
