@@ -393,14 +393,14 @@ app.use((req, res, next) => {
   }
 
   // ✅ Simple, Windows-safe listen: no reusePort, proper args order
-  const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
-  const host = (process.env.HOST || "").trim() || undefined; // undefined = all interfaces
+ const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
+// const host = ... (DELETE THIS LINE)
 
-  server.listen(port, host, async () => {
-    const shownHost = host ?? "0.0.0.0";
-    log(`serving on http://${shownHost}:${port}`);
+// Listen on the port Railway provides AND bind to 0.0.0.0
+server.listen(port, "0.0.0.0", async () => { 
+  log(`serving on http://0.0.0.0:${port}`);
 
-    // Initialize sample data for demonstration
-    try { await initializeSampleData(); } catch (e) { console.error(e); }
-  });
+  // Initialize sample data for demonstration
+  try { await initializeSampleData(); } catch (e) { console.error(e); }
+});
 })();
