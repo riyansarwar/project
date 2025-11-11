@@ -397,10 +397,14 @@ app.use((req, res, next) => {
 // const host = ... (DELETE THIS LINE)
 
 // Listen on the port Railway provides AND bind to 0.0.0.0
-server.listen(port, "0.0.0.0", async () => { 
+server.listen(port, "0.0.0.0", async () => {
   log(`serving on http://0.0.0.0:${port}`);
 
   // Initialize sample data for demonstration
-  try { await initializeSampleData(); } catch (e) { console.error(e); }
+  // try { await initializeSampleData(); } catch (e) { console.error(e); }
+  // ^^^ WE ARE COMMENTING THIS OUT TO STOP THE CRASH
+
+  log("Server is running. Sample data was skipped.");
+});
 });
 })();
