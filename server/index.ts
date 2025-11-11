@@ -393,17 +393,9 @@ app.use((req, res, next) => {
   }
 
   // ✅ Simple, Windows-safe listen: no reusePort, proper args order
- const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
-// const host = ... (DELETE THIS LINE)
+const PORT = process.env.PORT || 5000; // 5000 or 8080, doesn't matter
 
-// Listen on the port Railway provides AND bind to 0.0.0.0
-server.listen(port, "0.0.0.0", async () => {
-  log(`serving on http://0.0.0.0:${port}`);
-
-  // Initialize sample data for demonstration
-  // try { await initializeSampleData(); } catch (e) { console.error(e); }
-  // ^^^ WE ARE COMMENTING THIS OUT TO STOP THE CRASH
-
-  log("Server is running. Sample data was skipped.");
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
 })();
