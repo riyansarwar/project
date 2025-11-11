@@ -406,5 +406,4 @@ server.listen(port, "0.0.0.0", async () => {
 
   log("Server is running. Sample data was skipped.");
 });
-});
 })();
